@@ -17,12 +17,15 @@ tests/test_proxy.py                  Проверки соединений
 
 ## Развёртывание на VPS
 
-Требуются Linux с systemd, Bash, Python 3.9+ по пути `/usr/bin/python3`
+Требуются Linux с systemd, Git, Bash, Python 3.9+ по пути `/usr/bin/python3`
 и права root через `sudo`. Сторонних Python-зависимостей нет.
 
-Скопируйте весь проект на VPS или клонируйте его репозиторий. В каталоге проекта выполните:
+Подключитесь к VPS по SSH. Клонируйте репозиторий, перейдите в каталог проекта
+и запустите установщик:
 
 ```bash
+git clone https://github.com/ivngrmk/proxy_server.git
+cd proxy_server
 sudo bash scripts/install.sh
 ```
 
@@ -89,9 +92,10 @@ sudo tail -f /var/lib/proxy-server/logs/proxy.log
 
 ## Обновление и удаление
 
-Загрузите новую версию проекта и повторите:
+В каталоге клонированного репозитория получите изменения и повторно запустите установщик:
 
 ```bash
+git pull --ff-only
 sudo bash scripts/install.sh
 ```
 
