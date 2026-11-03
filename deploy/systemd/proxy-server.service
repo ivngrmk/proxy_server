@@ -1,0 +1,22 @@
+[Unit]
+Description=HTTP CONNECT proxy server
+After=network.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+StateDirectory=proxy-server
+StateDirectoryMode=0700
+WorkingDirectory=/opt/proxy-server
+EnvironmentFile=/etc/proxy-server.env
+ExecStart=/usr/bin/python3 -u /opt/proxy-server/proxy_server.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
